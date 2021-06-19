@@ -1,0 +1,7 @@
+TARGET: Cityscapes
+EXP_NAME: GTA2Cityscapes_generalization_fsdr
+NUM_WORKERS: 4
+TEST:
+  MODE: single
+  RESTORE_FROM:
+    - ../../pretrained_models/FSDR_deeplab.pth
