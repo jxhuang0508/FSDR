@@ -6,23 +6,26 @@
 ## Paper
 ![](./fsdr_figure_1.jpg)
 
-[Cross-View Regularization for Domain Adaptive Panoptic Segmentation](https://arxiv.org/abs/2103.02584)  
+[FSDR: Frequency Space Domain Randomization for Domain Generalization](https://arxiv.org/abs/2103.02370)  
  [Jiaxing Huang](https://scholar.google.com/citations?user=czirNcwAAAAJ&hl=en&oi=ao),  [Dayan Guan](https://scholar.google.com/citations?user=9jp9QAsAAAAJ&hl=en), [Xiao Aoran](https://scholar.google.com/citations?user=yGKsEpAAAAAJ&hl=en), [Shijian Lu](https://scholar.google.com/citations?user=uYmK-A0AAAAJ&hl=en)  
  School of Computer Science Engineering, Nanyang Technological University, Singapore  
- IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2021 (**Oral**)
+ IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2021
 
-If you find this code useful for your research, please cite our [paper](https://arxiv.org/abs/2103.02584):
+If you find this code useful for your research, please cite our [paper](https://openaccess.thecvf.com/content/CVPR2021/papers/Huang_FSDR_Frequency_Space_Domain_Randomization_for_Domain_Generalization_CVPR_2021_paper.pdf):
 
 ```
-@article{huang2021cross,
-  title={Cross-View Regularization for Domain Adaptive Panoptic Segmentation},
-  author={Huang, Jiaxing and Guan, Dayan and Xiao, Aoran and Lu, Shijian},
-  journal={arXiv preprint arXiv:2103.02584},
-  year={2021}
+@InProceedings{Huang_2021_CVPR,
+    author    = {Huang, Jiaxing and Guan, Dayan and Xiao, Aoran and Lu, Shijian},
+    title     = {FSDR: Frequency Space Domain Randomization for Domain Generalization},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2021},
+    pages     = {6891-6902}
 }
 ```
+
 ## Abstract
-Panoptic segmentation unifies semantic segmentation and instance segmentation which has been attracting increasing attention in recent years. However, most existing research was conducted under a supervised learning setup whereas unsupervised domain adaptive panoptic segmentation which is critical in different tasks and applications is largely neglected. We design a domain adaptive panoptic segmentation network that exploits inter-style consistency and inter-task regularization for optimal domain adaptive panoptic segmentation. The inter-style consistency leverages semantic invariance across the same image of the different styles which fabricates certain self-supervisions to guide the network to learn domain-invariant features. The inter-task regularization exploits the complementary nature of instance segmentation and semantic segmentation and uses it as a constraint for better feature alignment across domains. Extensive experiments over multiple domain adaptive panoptic segmentation tasks (e.g. synthetic-to-real and real-to-real) show that our proposed network achieves superior segmentation performance as compared with the state-of-the-art.
+Domain generalization aims to learn a generalizable model from a 'known’ source domain for various 'unknown’ target domains. It has been studied widely by domain randomization that transfers source images to different styles in spatial space for learning domain-agnostic features. However, most existing randomization methods use GANs that often lack of controls and even alter semantic structures of images undesirably. Inspired by the idea of JPEG that converts spatial images into multiple frequency components (FCs), we propose Frequency Space Domain Randomization (FSDR) that randomizes images in frequency space by keeping domain-invariant FCs (DIFs) and randomizing domain-variant FCs (DVFs) only. FSDR has two unique features: 1) it decomposes images into DIFs and DVFs which allows explicit access and manipulation of them and more controllable randomization; 2) it has minimal effects on semantic structures of images and domain-invariant features. We examined domain variance and invariance property of FCs statistically and designed a network that can identify and fuse DIFs and DVFs dynamically through iterative learning. Extensive experiments over multiple domain generalizable segmentation tasks show that FSDR achieves superior segmentation and its performance is even on par with domain adaptation methods that access target data in training.
 
 ## Preparation
 
@@ -31,7 +34,7 @@ Panoptic segmentation unifies semantic segmentation and instance segmentation wh
 * Pytorch >= 0.4.1
 * CUDA 9.0 or higher
 
-### Install UPSNet
+### Install FSDR
 0. Clone the repo:
 ```bash
 $ git clone https://github.com/jxhuang0508/CVRN.git
