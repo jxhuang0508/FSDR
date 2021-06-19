@@ -68,9 +68,11 @@ FSDR/ADVENT/data/Cityscapes/gtFine/val               % Cityscapes validation gro
 
 ### Prepare FSDR
 ```bash
-$ cp FSDR/models/* UPSNet/upsnet/models
-$ cp FSDR/dataset/* UPSNet/upsnet/dataset
-$ cp FSDR/upsnet/* UPSNet/upsnet
+$ cd ..
+$ cp fsdr/domain_adaptation/* ADVENT/domain_adaptation
+$ cp fsdr/model/* ADVENT/model
+$ cp fsdr/script/test_city_fcn.py ADVENT/script
+$ cp fsdr/script/configs/* ADVENT/script/configs
 ```
 
 ### Pre-trained models
