@@ -69,10 +69,10 @@ FSDR/ADVENT/data/Cityscapes/gtFine/val               % Cityscapes validation gro
 ### Prepare FSDR
 ```bash
 $ cd ..
-$ cp fsdr/domain_adaptation/* ADVENT/domain_adaptation
-$ cp fsdr/model/* ADVENT/model
-$ cp fsdr/script/test_city_fcn.py ADVENT/script
-$ cp fsdr/script/configs/* ADVENT/script/configs
+$ cp fsdr/domain_adaptation/* ADVENT/advent/domain_adaptation
+$ cp fsdr/model/* ADVENT/advent/model
+$ cp fsdr/script/test_city_fcn.py ADVENT/advent/script
+$ cp fsdr/script/configs/* ADVENT/advent/script/configs
 ```
 
 ### Pre-trained models
