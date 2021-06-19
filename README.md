@@ -76,26 +76,73 @@ $ cp fsdr/script/configs/* ADVENT/advent/script/configs
 ```
 
 ### Pre-trained models
-Pre-trained models can be downloaded [here](https:xxx) and put in ```FSDR/ADVENT/pretrained_models```
+Pre-trained models can be downloaded [here](https://github.com/jxhuang0508/FSDR/releases/tag/Latest) and put in ```FSDR/ADVENT/pretrained_models```
 
 ### Evaluation
 ```bash
 $ cd FSDR/ADVENT/advent/scripts
 $ python test.py --cfg ./configs/fsdr_pretrained.yml
-$ 2021-06-10 14:20:09,688 | base_dataset.py | line 499:           |    PQ     SQ     RQ     N
-$ 2021-06-10 14:20:09,688 | base_dataset.py | line 500: --------------------------------------
-$ 2021-06-10 14:20:09,688 | base_dataset.py | line 505: All       |  34.0   68.2   43.4    16
-$ 2021-06-10 14:20:09,688 | base_dataset.py | line 505: Things    |  27.9   73.6   37.3     6
-$ 2021-06-10 14:20:09,688 | base_dataset.py | line 505: Stuff     |  37.7   65.0   47.1    10
+$ Evaluating model /home/jiaxinghuang/ADVENT/experiments/snapshots/GTA2Cityscapes_DeepLabv2_MinEnt/model_50.pth
+$  20%|███████████████████▊                                                                               | 100/500 [00:33<02:04,  3.21it/s]100 / 500: 44.26
+$  40%|███████████████████████████████████████▌                                                           | 200/500 [01:04<01:35,  3.13it/s]200 / 500: 43.10
+$  60%|███████████████████████████████████████████████████████████▍                                       | 300/500 [01:36<01:02,  3.18it/s]300 / 500: 43.56
+$  80%|███████████████████████████████████████████████████████████████████████████████▏                   | 400/500 [02:08<00:31,  3.18it/s]400 / 500: 44.04
+$ 100%|███████████████████████████████████████████████████████████████████████████████████████████████████| 500/500 [02:40<00:00,  3.11it/s]
+$	Current mIoU: 44.75
+$	Current best model: /home/jiaxinghuang/ADVENT/experiments/snapshots/GTA2Cityscapes_DeepLabv2_MinEnt/model_50.pth
+$	Current best mIoU: 44.75
+$ road	91.8
+$ sidewalk	48.3
+$ building	81.99
+$ wall	32.49
+$ fence	20.69
+$ pole	37.28
+$ light	37.66
+$ sign	26.2
+$ vegetation	83.65
+$ terrain	38.98
+$ sky	60.98
+$ person	60.91
+$ rider	26.91
+$ car	81.54
+$ truck	36.89
+$ bus	41.58
+$ train	0.52
+$ motocycle	15.43
+$ bicycle	26.46
 ```
+
 ```bash
 $ cd FSDR/ADVENT/advent/scripts
 $ python test_fcn.py --cfg ./configs/fsdr_pretrained_fcn.yml
-$ 2021-06-10 14:27:36,841 | base_dataset.py | line 361:           |    PQ     SQ     RQ     N
-$ 2021-06-10 14:27:36,842 | base_dataset.py | line 362: --------------------------------------
-$ 2021-06-10 14:27:36,842 | base_dataset.py | line 367: All       |  31.4   66.4   40.0    16
-$ 2021-06-10 14:27:36,842 | base_dataset.py | line 367: Things    |  20.7   68.1   28.2     6
-$ 2021-06-10 14:27:36,842 | base_dataset.py | line 367: Stuff     |  37.9   65.4   47.0    10
+$ Evaluating model /home/jiaxinghuang/ADVENT/experiments/snapshots/GTA2Cityscapes_FCN_fsdr_fcn2/model_200.pth
+$  20%|████████▏                                | 100/500 [00:34<02:18,  2.89it/s]100 / 500: 45.66
+$  40%|████████████████▍                        | 200/500 [01:08<01:39,  3.00it/s]200 / 500: 44.50
+$  60%|████████████████████████▌                | 300/500 [01:40<01:01,  3.23it/s]300 / 500: 44.48
+$  80%|████████████████████████████████▊        | 400/500 [02:11<00:30,  3.23it/s]400 / 500: 44.18
+$ 100%|█████████████████████████████████████████| 500/500 [02:41<00:00,  3.09it/s]
+$ 	Current mIoU: 44.86
+$ 	Current best model: /home/jiaxinghuang/ADVENT/experiments/snapshots/GTA2Cityscapes_FCN_fsdr_fcn2/model_200.pth
+$ 	Current best mIoU: 44.86
+$ road	92.07
+$ sidewalk	52.6
+$ building	82.33
+$ wall	26.51
+$ fence	27.1
+$ pole	35.85
+$ light	35.67
+$ sign	39.75
+$ vegetation	85.33
+$ terrain	42.53
+$ sky	72.22
+$ person	60.24
+$ rider	20.95
+$ car	84.43
+$ truck	33.23
+$ bus	36.33
+$ train	0.5
+$ motocycle	10.04
+$ bicycle	14.73
 ```
 
 ## Acknowledgements
