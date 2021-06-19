@@ -37,51 +37,49 @@ Domain generalization aims to learn a generalizable model from a 'known’ sourc
 ### Install FSDR
 0. Clone the repo:
 ```bash
-$ git clone https://github.com/jxhuang0508/CVRN.git
-$ cd CVRN
-```
-1. Creat conda environment:
-```bash
-$ conda env create -f environment.yaml
+$ git clone https://github.com/jxhuang0508/FSDR.git
+$ cd FSDR
 ```
 
-2. Clone UPSNet:
+1. Clone ADVENT:
 ```bash
-$ git clone https://github.com/uber-research/UPSNet.git
-```
-3. Initialization:
-```bash
-$ cd UPSNet
-$ sh init.sh
-$ cp -r lib/dataset_devkit/panopticapi/panopticapi/ .
+$ git https://github.com/valeoai/ADVENT.git
 ```
 
-### Import Deeplab-v2
+2. Initialization:
 ```bash
-$ git clone https://github.com/yzou2/CRST.git
+$ cd ADVENT
+$ conda install -c menpo opencv
+$ pip install -e <root_dir_of_ADVENT>
+$ 
+```
+You can also take a look at the [ADVENT](https://github.com/valeoai/ADVENT) if you are uncertain about steps to install ADVENT project and environment.
+
+### Datasets
+Similar to ADVENT, the datasets are put in ```FSDR/ADVENT/data```.
+
+* **Cityscapes**: You can follow the guidelines in [Cityscape](https://www.cityscapes-dataset.com/) to download the validation images and ground-truths. The Cityscapes dataset directory is supposed to have the following structure:
+```bash
+FSDR/ADVENT/data/Cityscapes/                         % Cityscapes dataset root              
+FSDR/ADVENT/data/Cityscapes/leftImg8bit/val          % Cityscapes validation images
+FSDR/ADVENT/data/Cityscapes/gtFine/val               % Cityscapes validation ground-truths
+...
 ```
 
-### Prepare Dataset (Download Cityscapes dataset at UPSNet/data/cityscapes)
+### Prepare FSDR
 ```bash
-$ cd UPSNet
-$ sh init_cityscapes.sh
-$ cd ..
-$ python cvrn/init_citiscapes_19cls_to_16cls.py
+$ cp FSDR/models/* UPSNet/upsnet/models
+$ cp FSDR/dataset/* UPSNet/upsnet/dataset
+$ cp FSDR/upsnet/* UPSNet/upsnet
 ```
 
-### Prepare CVRN
-```bash
-$ cp cvrn/models/* UPSNet/upsnet/models
-$ cp cvrn/dataset/* UPSNet/upsnet/dataset
-$ cp cvrn/upsnet/* UPSNet/upsnet
-```
 ### Pre-trained models
-Pre-trained models can be downloaded [here](https://github.com/jxhuang0508/CVRN/releases/tag/Latest) and put in ```CVRN/pretrained_models```
+Pre-trained models can be downloaded [here](https:xxx) and put in ```FSDR/ADVENT/pretrained_models```
 
 ### Evaluation
 ```bash
-$ cd UPSNet
-$ python upsnet/test_cvrn_upsnet.py --cfg ../config/cvrn_upsnet.yaml --weight_path ../pretrained_models/cvrn_upsnet.pth
+$ cd FSDR/ADVENT/advent/scripts
+$ python test.py --cfg ./configs/fsdr_pretrained.yml
 $ 2021-06-10 14:20:09,688 | base_dataset.py | line 499:           |    PQ     SQ     RQ     N
 $ 2021-06-10 14:20:09,688 | base_dataset.py | line 500: --------------------------------------
 $ 2021-06-10 14:20:09,688 | base_dataset.py | line 505: All       |  34.0   68.2   43.4    16
@@ -89,25 +87,17 @@ $ 2021-06-10 14:20:09,688 | base_dataset.py | line 505: Things    |  27.9   73.6
 $ 2021-06-10 14:20:09,688 | base_dataset.py | line 505: Stuff     |  37.7   65.0   47.1    10
 ```
 ```bash
-$ python upsnet/test_cvrn_pfpn.py --cfg ../config/cvrn_pfpn.yaml --weight_path ../pretrained_models/cvrn_pfpn.pth
+$ cd FSDR/ADVENT/advent/scripts
+$ python test_fcn.py --cfg ./configs/fsdr_pretrained_fcn.yml
 $ 2021-06-10 14:27:36,841 | base_dataset.py | line 361:           |    PQ     SQ     RQ     N
 $ 2021-06-10 14:27:36,842 | base_dataset.py | line 362: --------------------------------------
 $ 2021-06-10 14:27:36,842 | base_dataset.py | line 367: All       |  31.4   66.4   40.0    16
 $ 2021-06-10 14:27:36,842 | base_dataset.py | line 367: Things    |  20.7   68.1   28.2     6
 $ 2021-06-10 14:27:36,842 | base_dataset.py | line 367: Stuff     |  37.9   65.4   47.0    10
 ```
-```bash
-$ python upsnet/test_cvrn_psn.py --cfg ../config/cvrn_psn.yaml --weight_path ../pretrained_models/cvrn_psn_maskrcnn_branch.pth
-$ 2021-06-10 23:18:22,662 | test_cvrn_psn.py | line 240: combined pano result:
-$ 2021-06-10 23:20:32,259 | base_dataset.py | line 361:           |    PQ     SQ     RQ     N
-$ 2021-06-10 23:20:32,261 | base_dataset.py | line 362: --------------------------------------
-$ 2021-06-10 23:20:32,261 | base_dataset.py | line 367: All       |  32.1   66.6   41.1    16
-$ 2021-06-10 23:20:32,261 | base_dataset.py | line 367: Things    |  21.6   68.7   30.2     6
-$ 2021-06-10 23:20:32,261 | base_dataset.py | line 367: Stuff     |  38.4   65.3   47.6    10
-```
 
 ## Acknowledgements
-This codebase is heavily borrowed from [UPSNet](https://github.com/uber-research/UPSNet) and [CRST](https://github.com/yzou2/CRST).
+This codebase is heavily borrowed from [ADVENT](https://github.com/valeoai/ADVENT) and [AdaptSegNet](https://github.com/wasidennis/AdaptSegNet).
 
 ## Contact
 If you have any questions, please contact: jiaxing.huang@ntu.edu.sg
